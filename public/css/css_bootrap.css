@@ -1,0 +1,14 @@
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+p {
+    font-family: "Times New Roman", Times, serif;
+    font-style: normal;
+    font-weight: bold;
+}
+
+td:nth-child(odd) {
+    background-color: #f2f2f2;
+}
