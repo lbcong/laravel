@@ -17,7 +17,9 @@
     <hr>
     <div class="row">
         <div class="col-md-12 col-sm-12" style="border: 1px">
-            {!! Form::open(['action' => 'UserController@store', 'class' => 'form-inline', 'enctype' => 'multipart/form-data']) !!}
+            {{--{!! Form::model($user,['action' => 'UserController@store', 'class' => 'form-inline', 'enctype' => 'multipart/form-data'--}}
+            {{--]) !!}--}}
+            {{ Form::model($user, ['url' => ['/user', $user->id],'class' => 'form-inline','method'=>isset($user->id)?'PUT':'POST'])}}
             @include('user.form_user')
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-5">

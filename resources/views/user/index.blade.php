@@ -10,6 +10,10 @@
 
 @section('content')
 
+    @if (session('test'))
+        <p>{{ session('test') }}</p>
+    @endif
+
     @if(is_null($users))
         khong co ket qua
     @else
@@ -54,13 +58,24 @@
                             </td>
                             <td>
                                 <div class="col-md-2 col-md-offset-5">
-                                    <a class="btn  btn-primary btn-flat"
-                                       href="update.php?id=">update</a>
+                                    {!! Form::open([
+                                    'action' => ['UserController@edit', $user->id],
+                                    'method' => 'GET',
+                                    ]) !!}
+                                    {!! Form::submit(trans('update', ['object' => class_basename(Product::class)]), [
+                                        'class' => 'btn  btn-primary btn-flat',
+                                    ]) !!}
+                                    {!! Form::close() !!}
 
-                                    <a class="btn  btn-danger btn-flat"
-                                       href="delete.php?id="
-                                    >delete
-                                    </a>
+
+                                    {!! Form::open([
+                                    'action' => ['UserController@destroy', $user->id],
+                                    'method' => 'DELETE',
+                                    ]) !!}
+                                    {!! Form::submit(trans('delete', ['object' => class_basename(Product::class)]), [
+                                        'class' => 'btn  btn-danger btn-flat',
+                                    ]) !!}
+                                    {!! Form::close() !!}
                                 </div>
                             </td>
                         </tr>
